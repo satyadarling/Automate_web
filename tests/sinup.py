@@ -1,0 +1,41 @@
+from selenium.webdriver.common.by import By
+from tests.base_page import BasePage
+
+class SinUp(BasePage):
+    NAME = (By.CSS_SELECTOR, 'input[name="name"]')
+    EMAIL = (By.CSS_SELECTOR, 'input[data-qa="signup-email"]')
+    SINUP_BUTTON = (By.CSS_SELECTOR, 'button[data-qa="signup-button"]')
+    SET_PWD=(By.CSS_SELECTOR,'input[name="password"]')
+    DAY=(By.CSS_SELECTOR,'select[id="days"]')
+    MONTH=(By.CSS_SELECTOR,'select[id="months"]')
+    YEAR=(By.CSS_SELECTOR,'select[id="years"]')
+    FNAME=(By.CSS_SELECTOR,'input[id="first_name"]')
+    LNAME=(By.CSS_SELECTOR,'input[id="last_name"]')
+    ADDRESS=(By.CSS_SELECTOR,'input[id="address1"]')
+    COUNTRY=(By.CSS_SELECTOR,'select[id="country"]')
+    STATE=(By.CSS_SELECTOR,'input[id="state"]')
+    CITY=(By.CSS_SELECTOR,'input[id="city"]')
+    ZIPCODE=(By.CSS_SELECTOR,'input[id="zipcode"]')
+    MOBILENUM=(By.CSS_SELECTOR,'input[id="mobile_number"]')
+    CREATE_ACCOUNT=(By.CSS_SELECTOR,'button[data-qa="create-account"]')
+    #ERROR_TEXT=(By.XPATH,"//*[contains(text(),'Your email or password is incorrect!')]")
+
+    def Sinup(self, Name, Email):
+        self.enter_text(self.NAME, Name)
+        self.enter_text(self.EMAIL, Email)
+        self.click(self.SINUP_BUTTON)
+        #return self.get_text(self.ERROR_TEXT)
+    def nextstep(self,pwd,day,month,year,fname,lname,Address,country,state,City,zipcode,mobile):
+        self.enter_text(self.SET_PWD,pwd)
+        self.select_val(self.DAY,day)
+        self.select_val(self.MONTH,month)
+        self.select_val(self.YEAR,year)
+        self.enter_text(self.FNAME, fname)
+        self.enter_text(self.LNAME, lname)
+        self.enter_text(self.ADDRESS, Address)
+        self.select_val(self.COUNTRY,country)
+        self.enter_text(self.STATE, state)
+        self.enter_text(self.CITY, City)
+        self.enter_text(self.ZIPCODE, zipcode)
+        self.enter_text(self.MOBILENUM, mobile)
+        self.click(self.CREATE_ACCOUNT)
