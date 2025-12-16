@@ -2,3 +2,4 @@ selenium
 pytest
 pandas
 playwright
+paramiko
